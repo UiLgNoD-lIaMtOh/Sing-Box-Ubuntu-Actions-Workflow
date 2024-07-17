@@ -20,20 +20,17 @@
 3. 赋予 actions[bot] 读/写仓库权限，在仓库中点击 Settings -> Actions -> General -> Workflow Permissions -> Read and write permissions -> save，如图所示
 ![image](https://github.com/user-attachments/assets/2faa1a40-9891-4914-ace7-d5d23434b4bb) 
 
-4. 添加 linux 用户名 `USER_NAME` 在 GitHub 仓库页 -> Settings -> Secrets -> actions -> New repository secret  
-5. 添加 linux 密码 `USER_PW` 在 GitHub 仓库页 -> Settings -> Secrets -> actions -> New repository secret  
-6. 添加 linux hostname `HOST_NAME` 在 GitHub 仓库页 -> Settings -> Secrets -> actions -> New repository secret  
-7. 添加 email smtp 服务器域名 `MAILADDR` 在 GitHub 仓库页 -> Settings -> Secrets -> actions -> New repository secret    
-8. 添加 email smtp 服务器端口 `MAILPORT` 在 GitHub 仓库页 -> Settings -> Secrets -> actions -> New repository secret    
-9. 添加 email smtp 服务器登录账号 `MAILUSERNAME` 在 GitHub 仓库页 -> Settings -> Secrets -> actions -> New repository secret  
-10. 添加 email smtp 服务器第三方登陆授权码 `MAILPASSWORD` 在 GitHub 仓库页 -> Settings -> Secrets -> actions -> New repository secret  
-11. 添加  email smtp 服务器应该发送邮件位置 `MAILSENDTO` 在 GitHub 仓库页 -> Settings -> Secrets -> actions -> New repository secret
-12. 以上 4~11 步流程类似如图所示
+4. 添加 email smtp 服务器域名 `MAILADDR` 在 GitHub 仓库页 -> Settings -> Secrets -> actions -> New repository secret    
+5. 添加 email smtp 服务器端口 `MAILPORT` 在 GitHub 仓库页 -> Settings -> Secrets -> actions -> New repository secret    
+6. 添加 email smtp 服务器登录账号 `MAILUSERNAME` 在 GitHub 仓库页 -> Settings -> Secrets -> actions -> New repository secret  
+7. 添加 email smtp 服务器第三方登陆授权码 `MAILPASSWORD` 在 GitHub 仓库页 -> Settings -> Secrets -> actions -> New repository secret  
+8. 添加  email smtp 服务器应该发送邮件位置 `MAILSENDTO` 在 GitHub 仓库页 -> Settings -> Secrets -> actions -> New repository secret
+9. 以上 4~9 步流程类似如图所示
 ![image](https://github.com/user-attachments/assets/b8a825c8-8668-461e-b9b6-541e6c3d01c2)
 ![image](https://github.com/user-attachments/assets/042da455-64c8-451a-9996-246fe272f218)
 
-15. 转到 Actions -> Sing-Box-Ubuntu-Actions-Workflow 并且启动 workflow，实现自动化  
-16. 新目录结构  
+10. 转到 Actions -> Sing-Box-Ubuntu-Actions-Workflow 并且启动 workflow，实现自动化  
+11. 新目录结构  
 
         .
         ├── .github                                     # github actions 配置目录  
@@ -43,7 +40,7 @@
         ├── set-sing-box.sh                             # 搭建配置 sing-box 脚本  
         └── README.md                                   # 这个是说明文件   
 
-17. 脚本会生成6个文件发送到邮箱，如下图  
+12. 脚本会生成4个文件发送到邮箱，如下图  
 
         1. result.txt
             a. 包含 vmess 端口转发信息以及共享支持 nekobox 导入链接
