@@ -1495,7 +1495,7 @@ UiLgNoD-lIaMtOh
     {
       "server": "$VM_WEBSITE",
       "server_port": $CLOUDFLARED_PORT_VM,
-      "tag": "$SB_VM_PROTOCOL_OUT_TAG"
+      "tag": "$SB_VM_PROTOCOL_OUT_TAG",
       "tls": {
         "enabled": true,
         "server_name": "$CLOUDFLARED_DOMAIN_VM",
