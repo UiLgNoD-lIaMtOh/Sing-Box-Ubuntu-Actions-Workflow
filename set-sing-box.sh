@@ -92,63 +92,7 @@ get_random_port() {
     # 输出不占用任何端口的数值
     echo $port
 }
-# 初始化用户密码
-createUserNamePassword() {
-    # 判断 USER_NAME 变量是否在 actions 环境中存在
-    # 不存在则打印提示并退出，返回一个退出号
-    # 存在则添加 USER_NAME 变量用户，将用户添加到 sudo 组
-    if [[ -z "$USER_NAME" ]]; then
-        echo "Please set 'USER_NAME' for linux"
-        exit 2
-    else
-        sudo useradd -m $USER_NAME
-        sudo adduser $USER_NAME sudo
-    fi
-    # 判断 USER_PW 变量是否在 actions 环境中存在
-    # 不存在则打印提示并退出，返回一个退出号
-    # 存在则执行以下步骤
-    # 将通过管道将用户名和密码传递给 chpasswd 更改用户密码
-    # 使用 sed 工具在 "/etc/passwd" 文件中将所有 "/bin/sh" 替换为 "/bin/bash"
-    # 打印提示信息
-    # 以防万一，通过管道将两次输入的密码传递给 passwd 命令，以更新用户的密码
-    if [[ -z "$USER_PW" ]]; then
-        echo "Please set 'USER_PW' for linux"
-        exit 3
-    else
-        echo "$USER_NAME:$USER_PW" | sudo chpasswd
-        sudo sed -i 's/\/bin\/sh/\/bin\/bash/g' /etc/passwd
-        echo "Update linux user password !"
-        echo -e "$USER_PW\n$USER_PW" | sudo passwd "$USER_NAME"
-    fi
-    # 判断 HOST_NAME 变量是否在 actions 环境中存在
-    # 不存在则打印提示并退出，返回一个退出号
-    # 存在则设置 hostname 变量
-    if [[ -z "$HOST_NAME" ]]; then
-        echo "Please set 'HOST_NAME' for linux"
-        exit 4
-    else
-        sudo hostname $HOST_NAME
-    fi
-    # 执行 sudo 免密码脚本生成
-    cat <<EOL | sudo tee test.sh
-# 在 /etc/sudoers.d 路径下创建一个 USER_NAME 变量的文件
-sudo touch /etc/sudoers.d/$USER_NAME
-# 给文件更改使用者和使用组 USER_NAME 变量
-sudo chown -Rv $USER_NAME:$USER_NAME /etc/sudoers.d/$USER_NAME
-# 给文件更改可读写执行的权限 777
-sudo chmod -Rv 0777 /etc/sudoers.d/$USER_NAME
-# 允许 USER_NAME 用户在执行sudo时无需输入密码，写入到文件
-echo "$USER_NAME ALL=(ALL) NOPASSWD:ALL" | sudo tee > /etc/sudoers.d/$USER_NAME
-# 给文件更改使用者和使用组 root
-sudo chown -Rv root:root  /etc/sudoers.d/$USER_NAME
-# 给文件更改 root 可读 USER_NAME 可读 其他用户无权限 0440
-sudo chmod -Rv 0440 /etc/sudoers.d/$USER_NAME
-# 打印文件信息
-sudo cat /etc/sudoers.d/$USER_NAME
-EOL
-    # 以 sudo 权限执行免密码脚本并删除
-    sudo bash -c "bash test.sh ; rm -rfv test.sh"
-}
+
 # 下载 CloudflareSpeedTest sing-box cloudflared 配置并启用
 getAndStart() {
     # 启用 TCP BBR 拥塞控制算法，参考 https://github.com/teddysun/across
