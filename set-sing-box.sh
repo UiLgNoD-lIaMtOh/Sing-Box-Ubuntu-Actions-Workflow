@@ -269,7 +269,8 @@ UiLgNoD-lIaMtOh
     cd -
     # 删除文件
     sudo rm -rfv $FILE_NAME /home/$USER_NAME/${FILE_NAME%%_$(uname -s)_$ARCH.tar.gz}
-
+    # 浏览器
+    BROWSER=chrome
     # VMESS 二维码生成扫描文件
     VMESS_LINK='vmess://'$(echo '{"add":"'$VM_WEBSITE'","aid":"0","alpn":"","fp":"'$BROWSER'","host":"'$CLOUDFLARED_DOMAIN_VM'","id":"'$VM_UUID'","net":"'$VMV_TYPE'","path":"/'$VM_PATH'?ed\u003d2048","port":"'$CLOUDFLARED_PORT_VM'","ps":"'$SB_VM_PROTOCOL_OUT_TAG'","scy":"auto","sni":"'$CLOUDFLARED_DOMAIN_VM'","tls":"tls","type":"","v":"2"}' | base64 -w 0)
     #qrencode -t UTF8 $VMESS_LINK
