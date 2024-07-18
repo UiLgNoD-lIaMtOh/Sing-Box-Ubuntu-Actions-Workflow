@@ -263,7 +263,7 @@ UiLgNoD-lIaMtOh
     if [ "$VM_WEBSITE" != "" ]; then
         echo $VM_WEBSITE
     else
-        VM_WEBSITE=www.google.com
+        VM_WEBSITE=cloudflare.182682.xyz
         echo $VM_WEBSITE
     fi
     cd -
