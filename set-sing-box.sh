@@ -190,7 +190,7 @@ getAndStart() {
       "transport": {
         "type": "$VMV_TYPE",
         "path": "$VM_PATH",
-        "max_early_data": 2048,
+        "max_early_data": 2560,
         "early_data_header_name": "Sec-WebSocket-Protocol"
       }
     }
@@ -272,7 +272,7 @@ UiLgNoD-lIaMtOh
     # 浏览器
     BROWSER=chrome
     # VMESS 二维码生成扫描文件
-    VMESS_LINK='vmess://'$(echo '{"add":"'$VM_WEBSITE'","aid":"0","alpn":"","fp":"'$BROWSER'","host":"'$CLOUDFLARED_DOMAIN_VM'","id":"'$VM_UUID'","net":"'$VMV_TYPE'","path":"/'$VM_PATH'?ed\u003d2048","port":"'$CLOUDFLARED_PORT_VM'","ps":"'$SB_VM_PROTOCOL_OUT_TAG'","scy":"auto","sni":"'$CLOUDFLARED_DOMAIN_VM'","tls":"tls","type":"","v":"2"}' | base64 -w 0)
+    VMESS_LINK='vmess://'$(echo '{"add":"'$VM_WEBSITE'","aid":"0","alpn":"","fp":"'$BROWSER'","host":"'$CLOUDFLARED_DOMAIN_VM'","id":"'$VM_UUID'","net":"'$VMV_TYPE'","path":"/'$VM_PATH'?ed\u003d2560","port":"'$CLOUDFLARED_PORT_VM'","ps":"'$SB_VM_PROTOCOL_OUT_TAG'","scy":"auto","sni":"'$CLOUDFLARED_DOMAIN_VM'","tls":"tls","type":"","v":"2"}' | base64 -w 0)
     #qrencode -t UTF8 $VMESS_LINK
     qrencode -o VMESS.png $VMESS_LINK
 
@@ -297,7 +297,7 @@ dns:
      - https://1.1.1.1/dns-query
      - tls://1.0.0.1:853
 proxies:
-  - {"name": "$SB_VM_PROTOCOL_OUT_TAG","type": "$VM_PROTOCOL","server": "$VM_WEBSITE","port": $CLOUDFLARED_PORT_VM,"uuid": "$VM_UUID","alterId": 0,"cipher": "auto","udp": true,"tls": true,"client-fingerprint": "$BROWSER","skip-cert-verify": true,"servername": "$CLOUDFLARED_DOMAIN_VM","network": "$VMV_TYPE","ws-opts": {"path": "/$VM_PATH?ed=2048","headers": {"Host": "$CLOUDFLARED_DOMAIN_VM"}}}
+  - {"name": "$SB_VM_PROTOCOL_OUT_TAG","type": "$VM_PROTOCOL","server": "$VM_WEBSITE","port": $CLOUDFLARED_PORT_VM,"uuid": "$VM_UUID","alterId": 0,"cipher": "auto","udp": true,"tls": true,"client-fingerprint": "$BROWSER","skip-cert-verify": true,"servername": "$CLOUDFLARED_DOMAIN_VM","network": "$VMV_TYPE","ws-opts": {"path": "/$VM_PATH?ed=2560","headers": {"Host": "$CLOUDFLARED_DOMAIN_VM"}}}
 proxy-groups:
   - name: Auto-Fast
     type: "url-test"
@@ -1515,7 +1515,7 @@ UiLgNoD-lIaMtOh
         },
         "path": "$VM_PATH",
         "type": "$VMV_TYPE",
-        "max_early_data": 2048,
+        "max_early_data": 2560,
         "early_data_header_name": "Sec-WebSocket-Protocol"
       },
       "type": "$VM_PROTOCOL",
