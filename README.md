@@ -12,13 +12,13 @@
 ## 描述
 1. 这个项目主要是为了临时能够正常看 youtube 和 google。  
 2. 为了实现 actions workflow 自动化运行，需要添加 `GITHUB_TOKEN` 环境变量，这个是访问 GitHub API 的令牌，可以在 GitHub 主页，点击个人头像，Settings -> Developer settings -> Personal access tokens -> Tokens (classic) -> Generate new token -> Generate new token (classic) ，设置名字为 GITHUB_TOKEN 接着要配置 环境变量有效时间，勾选环境变量作用域 repo write:packages workflow 和 admin:repo_hook 即可，最后点击Generate token，如图所示
-![image](https://github.com/user-attachments/assets/8f56f08d-ceee-49dd-98c9-7ba011cb54c5)
-![image](https://github.com/user-attachments/assets/f42a92e9-f2e6-4424-8196-9802ace4ac5e)
-![image](https://github.com/user-attachments/assets/e09dde46-c141-4782-a3c0-ead3939c4df2)
-![image](https://github.com/user-attachments/assets/21d2a910-a436-4ae2-972b-6fd05364f29d)
+![image](assets/00.jpeg)
+![image](assets/01.jpeg)
+![image](assets/02.jpeg)
+![image](assets/03.jpeg)
 
 3. 赋予 actions[bot] 读/写仓库权限，在仓库中点击 Settings -> Actions -> General -> Workflow Permissions -> Read and write permissions -> save，如图所示
-![image](https://github.com/user-attachments/assets/2faa1a40-9891-4914-ace7-d5d23434b4bb) 
+![image](assets/04.jpeg) 
 
 4. 添加 email smtp 服务器域名 `MAILADDR` 在 GitHub 仓库页 -> Settings -> Secrets -> actions -> New repository secret    
 5. 添加 email smtp 服务器端口 `MAILPORT` 在 GitHub 仓库页 -> Settings -> Secrets -> actions -> New repository secret    
@@ -26,8 +26,8 @@
 7. 添加 email smtp 服务器第三方登陆授权码 `MAILPASSWORD` 在 GitHub 仓库页 -> Settings -> Secrets -> actions -> New repository secret  
 8. 添加  email smtp 服务器应该发送邮件位置 `MAILSENDTO` 在 GitHub 仓库页 -> Settings -> Secrets -> actions -> New repository secret
 9. 以上 4~9 步流程类似如图所示
-![image](https://github.com/user-attachments/assets/b8a825c8-8668-461e-b9b6-541e6c3d01c2)
-![image](https://github.com/user-attachments/assets/042da455-64c8-451a-9996-246fe272f218)
+![image](assets/05.jpeg)
+![image](assets/06.jpeg)
 
 10. 转到 Actions -> Sing-Box-Ubuntu-Actions-Workflow 并且启动 workflow，实现自动化  
 11. 新目录结构  
@@ -51,7 +51,7 @@
         4. client-sing-box-config.json
             a. sing-box 配置文件支持 sing-box 导入
 
-![image](https://github.com/user-attachments/assets/e7d8aac7-5199-4a65-8865-b813f8284b06)
+![image](assets/07.jpeg)
 
 # 更新
     1. 出于安全考虑还是使用邮箱把发送内容发给自己的邮箱，生成的文件支持 sing-box nekobx 客户端  
